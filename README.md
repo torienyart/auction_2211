@@ -140,7 +140,7 @@ pry(main)> auction.potential_revenue
 
 ## Iteration 3 - More bidding stuff!
 
-Use TDD to update your `Auction` and `Item` classes to add the following functionalilty:
+Use TDD to update your `Auction` class to add the following functionalilty:
 - `bidders` should return an array of attendees who have placed a bid in the auction.
 - `bidder_info` should return a hash with keys that are attendees, and values that are a hash with that attendee's budget and an array of items that attendee has bid on. (see example below)
 
@@ -163,22 +163,23 @@ Use TDD to update your `Auction` and `Item` classes to add the following functio
  #      }
  #   }
  ```
-- `close_bidding` should update the item so that it will not accept additional bids
+
+- An Auction will now be created with a date - whatever date the event is created on through the use of `Date.today`. The addition of a date to the event should NOT break any previous tests.  The `date` method will return a string representation of the date - 'dd/mm/yyyy'. We want you to test this in with a date that is IN THE PAST. In order to test the date method in a way that will work today, tomorrow and on any date in the future, you will need to use a stub :)
 
 
 ## Iteration 4 - Dates ! And closing the auction
 
-Use TDD to update your classes to respond to the following interaction pattern.  Some notes:
-- An Auction will now be created with a date - whatever date the event is created on through the use of `Date.today`. The addition of a date to the event should NOT break any previous tests.  The `date` method will return a string representation of the date - 'dd/mm/yyyy'. We want you to test this in with a date that is IN THE PAST. In order to test the date method in a way that will work today, tomorrow and on any date in the future, you will need to use a stub :)
+Use TDD to update your `Item` and `Auction` classes to respond to the following interaction pattern.  Some notes:
+- `close_bidding` should update the item so that it will not accept additional bids
 - `close_auction` should close bidding and 'sell' items to attendees.  The method will return a hash with items as the keys, and the purchaser of that item as the values. Attendees will only purchase items that they can afford (their bid is less than their current budget).  If an attendee has bid on multiple items, they will purchase the items starting with the most expensive first, followed by the next most expensive, etc... while they still have enough money in their budget to pay for the item.  If the highest bidder for an item does not have enough budget to pay for the item, the next highest bidder will purchase the item.
 
 ```ruby 
 # {
-#   #<Item:0x00007f9ea5af30c0 ...> => #<Attendee:0x00007f9ea50c4748 ...>,
-#   #<Item:0x00007f9ea5a5a190 ...> => 'Not Sold',
-#   #<Item:0x00007f9ea5910c08 ...> => #<Attendee:0x00007f9ea50c4748 ...>,
-#   #<Item:0x00007f9ea5c08f00 ...> => #<Attendee:0x00007f9ea50b5b58 ...>,
-#   #<Item:0x00007f9ea5bc0480 ...> => #<Attendee:0x00007f9ea5b73f40 ...>
+#   #<Item: ...> => #<Attendee: ...>,
+#   #<Item: ...> => 'Not Sold',
+#   #<Item: ...> => #<Attendee: ...>,
+#   #<Item: ...> => #<Attendee: ...>,
+#   #<Item: ...> => 'Not Sold'
 # }
 #
 ```
