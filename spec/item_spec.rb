@@ -18,8 +18,8 @@ describe Item do
   describe 'bids' do
     let(:attendee1){Attendee.new(name: 'Megan', budget: '$50')}
     let(:attendee2){Attendee.new(name: 'Bob', budget: '$75')}
-    let(:attendee2){Attendee.new(name: 'Mike', budget: '$100')}
-    
+    let(:attendee3){Attendee.new(name: 'Mike', budget: '$100')}
+
     it 'can track bids' do
       expect(item1.bids).to eq({})
     end
