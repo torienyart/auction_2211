@@ -21,12 +21,38 @@ class Auction
   end
 
   def potential_revenue
-    bidded_items = @items.find_all do |item|
-      item.bids != {}
-    end
-
     bidded_items.reduce(0) do |revenue, item|
       revenue + item.current_high_bid
     end
+  end
+
+  def bidded_items
+    @items.find_all do |item|
+      item.bids != {}
+    end
+  end
+
+  def bidders
+    bidded_items.flat_map do |item|
+      item.bids.keys
+    end
+  end
+
+  def bidder_info
+    hash = {}
+    bidders.each do |bidder|
+      hash[bidder] = {
+        :budget => bidder.budget,
+        :items => []
+      }
+    end
+
+    bidded_items.each do |bidded_item|
+      bidded_item.bids.keys.each do |attendee|
+        hash[attendee][:items] << bidded_item
+      end
+    end
+
+    hash
   end
 end
