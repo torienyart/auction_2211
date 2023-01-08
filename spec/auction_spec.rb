@@ -11,7 +11,7 @@ describe Auction do
   let(:item5){Item.new('Forever Stamps')}
   let(:attendee1){Attendee.new(name: 'Megan', budget: '$50')}
   let(:attendee2){Attendee.new(name: 'Bob', budget: '$75')}
-  let(:attendee2){Attendee.new(name: 'Mike', budget: '$100')}
+  let(:attendee3){Attendee.new(name: 'Mike', budget: '$100')}
 
 
   it 'exists' do
