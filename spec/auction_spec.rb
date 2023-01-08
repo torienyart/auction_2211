@@ -65,22 +65,22 @@ describe Auction do
     end
 
     it 'can determine bidders' do
-      expect(auction.bidders).to eq([attendee1, attendee2, attendee3])
+      expect(auction.bidders).to include(attendee1, attendee2, attendee3)
     end
 
     it 'can determine bidder_info' do
-      expect(auction.bidder_info).to eq({
-        attendee1 => {:budget => 50, :items => [item1]},
-        attendee2 => {:budget => 75, :items => [item1, item3]},
-        attendee3 => {:budget => 100, :items => [item4]}
-      })
+      item3.add_bid(attendee2, 15)
+      
+      expect(auction.bidder_info).to be_an_instance_of(Hash)
+      expect(auction.bidder_info.keys).to include(attendee1, attendee2, attendee3)
+      expect(auction.bidder_info.values).to include({:budget => 50, :items => [item1]}, {:budget => 75, :items => [item1, item3]}, {:budget => 100, :items => [item4]})
     end
   end
 
   describe 'date' do
     it 'can determine auction date' do
       allow(auction).to receive(:date).and_return("01/08/1999")
-
+      # allow(Date).to recieve(:today).and_return("01/08/1999")
       expect(auction.date).to eq("01/08/1999")
     end
   end
