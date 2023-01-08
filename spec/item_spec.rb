@@ -6,8 +6,8 @@ describe Item do
   let(:item2){item2 = Item.new('Bamboo Picture Frame')}
   
   it 'exists' do
-    expect(item1).to be a Item
-    expect(item2).to be a Item
+    expect(item1).to be_an_instance_of Item
+    expect(item2).to be_an_instance_of Item
   end
 
   it 'has readable attributes' do
