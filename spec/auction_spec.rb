@@ -6,7 +6,7 @@ describe Auction do
   let(auction){Auction.new}
 
   it 'exists' do
-    expect(auction).to be an Auction
+    expect(auction).to be_an_instance_of Auction
   end
 
   it 'has readable attributes' do
