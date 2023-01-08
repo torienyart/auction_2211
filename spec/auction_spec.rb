@@ -79,7 +79,7 @@ describe Auction do
 
   describe 'date' do
     it 'can determine auction date' do
-      allow(auction).to receive(:date).and_return("01/08/1999")
+      allow(auction).to receive(:generate_todays_date).and_return(Date.new(1999, 1, 8))
       expect(auction.date).to eq("01/08/1999")
     end
   end

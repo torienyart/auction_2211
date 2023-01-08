@@ -1,9 +1,8 @@
 require 'date'
 class Auction
-  attr_reader :items, :date
+  attr_reader :items
   def initialize
     @items = []
-    @date = generate_todays_date
   end
 
   def add_item(item)
@@ -59,7 +58,11 @@ class Auction
   end
 
   def generate_todays_date
-    d = Date.today
+    Date.today
+  end
+
+  def date
+    d = generate_todays_date
 
     month_st = d.month.to_s
     day_st = d.day.to_s
@@ -73,6 +76,5 @@ class Auction
     end
 
     date_s = [month, day, d.year].join('/')
-    
   end
 end
