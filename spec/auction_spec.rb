@@ -3,7 +3,9 @@ require './lib/attendee'
 require './lib/auction'
 
 describe Auction do
-  let(auction){Auction.new}
+  let(:auction){Auction.new}
+  let(:item1){Item.new('Chalkware Piggy Bank')}
+  let(:item2){item2 = Item.new('Bamboo Picture Frame')}
 
   it 'exists' do
     expect(auction).to be_an_instance_of Auction
@@ -13,15 +15,18 @@ describe Auction do
     expect(auction.items).to eq([])
   end
 
-  before (:each) do
-    auction.add_item(item1)
-    auction.add_item(item2)
-  end
-  it 'can add_items' do
-    expect(auction.items).to eq(item1, item2)
-  end
+  describe 'items' do
+    before(:each) do
+      auction.add_item(item1)
+      auction.add_item(item2)
+    end
 
-  it 'can tell item names' do
-    expect(auction.item_names).to eq(["Chalkware Piggy Bank", "Bamboo Picture Frame"])
+    it 'can add_items' do
+      expect(auction.items).to eq([item1, item2])
+    end
+
+    it 'can tell item names' do
+      expect(auction.item_names).to eq(["Chalkware Piggy Bank", "Bamboo Picture Frame"])
+    end
   end
 end
