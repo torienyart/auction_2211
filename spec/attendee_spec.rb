@@ -4,7 +4,7 @@ describe Attendee do
   let(:attendee){Attendee.new(name: 'Megan', budget: '$50')}
  
   it 'exists' do
-    expect(attendee).to be an Attendee
+    expect(attendee).to be_an_instance_of Attendee
   end
 
   it 'has readable attributes' do
