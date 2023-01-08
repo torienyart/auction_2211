@@ -30,10 +30,11 @@ describe Item do
       })
     end
 
-  it 'can track highest bid' do
-    item1.add_bid(attendee2, 20)
-    item1.add_bid(attendee1, 22)
+    it 'can track highest bid' do
+      item1.add_bid(attendee2, 20)
+      item1.add_bid(attendee1, 22)
 
-    expect(item1.current_high_bid).to eq(22)
+      expect(item1.current_high_bid).to eq(22)
+    end
   end
 end
